@@ -268,14 +268,4 @@ public class LPS25H extends I2C_Device {
     return (short)( ( (buffer[1] & 0xFF) << 8 ) | (buffer[0] & 0xFF) );
   }
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
 }
