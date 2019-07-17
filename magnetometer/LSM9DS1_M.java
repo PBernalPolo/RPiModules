@@ -253,12 +253,12 @@ public class LSM9DS1_M extends I2C_Device {
     return;
   }
   
-  // gets accelerometer data
+  // gets magnetometer data
   public short[] get_magnetometerData(){
     // we read the bytes
     byte[] buffer = this.read_bytesAt( this.OUT_X_L_M , 6 );
-    // we compose each pair of bytes to return them as shorts (we do -y so that the reference system is right-handed)
-    return new short[]{  (short)( ( buffer[1] << 8 ) | (buffer[0] & 0xFF) )  ,  (short)-( ( buffer[3] << 8 ) | (buffer[2] & 0xFF) )  ,  (short)( ( buffer[5] << 8 ) | (buffer[4] & 0xFF) )  };
+    // we compose each pair of bytes to return them as shorts (we do -x and -y so that the reference system is right-handed)
+    return new short[]{  (short)-( ( buffer[1] << 8 ) | (buffer[0] & 0xFF) )  ,  (short)-( ( buffer[3] << 8 ) | (buffer[2] & 0xFF) )  ,  (short)( ( buffer[5] << 8 ) | (buffer[4] & 0xFF) )  };
   }
   
 }
